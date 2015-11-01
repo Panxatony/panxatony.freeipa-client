@@ -8,6 +8,8 @@
 #
 #==============================================================================+
 
+
+# start IPA client rollout
 - include: set-resolv.conf.yml
 - include: install-ipa-client.yml
 - include: client-enroll-ipa.yml
