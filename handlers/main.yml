@@ -1,2 +1,9 @@
 ---
 # handlers file for panxatony.freeipa-client
+
+handlers:
+  - name: restart sssd
+    service: name=sssd state=restarted
+
+  - name: restart network
+    service: name=network state=restarted

@@ -1,0 +1,44 @@
+[domain/{{ freeipa_domain_search }}]
+
+cache_credentials = True
+krb5_store_password_if_offline = True
+ipa_domain = {{ freeipa_domain_search }}
+id_provider = ipa
+auth_provider = ipa
+access_provider = ipa
+ipa_hostname = {{ ansible_nodename }}
+chpass_provider = ipa
+ipa_dyndns_update = True
+ipa_server = _srv_, {{ freeipa_hostname }}
+ldap_tls_cacert = /etc/ipa/ca.crt
+
+# For the SUDO integration
+sudo_provider = ldap
+ldap_uri = ldap://{{ freeipa_hostname }}
+ldap_sudo_search_base = {{ freeipa_ldap_sudo_search_base }}
+ldap_sasl_mech = GSSAPI
+ldap_sasl_authid = host/{{ ansible_nodename }}
+ldap_sasl_realm = {{ freeipa_kerberos_realm_name }}
+krb5_server = {{ freeipa_hostname }}
+
+[sssd]
+services = nss, sudo, pam, ssh
+config_file_version = 2
+
+domains = {{ freeipa_domain_search }}
+[nss]
+homedir_substring = {{ freeipa_user_homedir }}
+
+[pam]
+
+[sudo]
+
+[autofs]
+
+[ssh]
+
+[pac]
+
+[ifp]
+
+

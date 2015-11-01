@@ -1,0 +1,21 @@
+---
+#==============================================================================+
+# Description : Install IPA packages
+#
+# Supported OS: EL7 & EL6
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- name: install IPA software group
+  yum: name="{{item}}" state=present
+  with_items:
+     - "sssd"
+     - "sssd-client"
+     - "sssd-proxy"
+     - "sssd-ipa"
+     - "authconfig"
+     - "ipa-client"
+     - "oddjob-mkhomedir"
+

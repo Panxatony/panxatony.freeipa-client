@@ -1,6 +1,6 @@
 ---
 #==============================================================================+
-# Description : Execute tasks to add system to FreeIPA directory server
+# Description : Set IPA Server as DNS server
 #
 # Supported OS: EL7 & EL6
 #
@@ -8,6 +8,5 @@
 #
 #==============================================================================+
 
-- include: set-resolv.conf.yml
-- include: install-ipa-client.yml
-- include: client-enroll-ipa.yml
+- name: Creates the /etc/resolv.conf file 
+  template: src=etc-resolv.conf.j2 dest=/etc/resolv.conf
