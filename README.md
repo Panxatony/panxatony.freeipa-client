@@ -1,22 +1,40 @@
-Role Name
+panxatony.freeipa-client
 =========
 
-A brief description of the role goes here.
+Add server to FreeIPA System
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+
+    none
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
+    #server FreeIPA variables
+    freeipa_server_ip: 192.168.237.11
+    freeipa_hostname: ipasrv.cs9demo.lab
+    freeipa_alias: ipasrv
+    freeipa_domain_search: cs9demo.lab
+    freeipa_kerberos_realm_name: CS9DEMO.LAB
+    freeipa_ldap_search_base: "dc=cs9demo,dc=lab"
+    freeipa_ldap_user_search_base: "cn=users,dc=cs9demo,dc=lab"
+    freeipa_ldap_group_search_base: "cn=groups,dc=cs9demo,dc=lab"
+    freeipa_ldap_default_bind_dn: "uid=admin,cn=users,dc=cs9demo,dc=lab"
+    freeipa_ldap_uri: "ldaps://ipasrv.cloud-cell02.audi.vwg/"
+    freeipa_ldap_sudo_search_base: "ou=SUDOers,dc=cs9demo,dc=lab"
+    freeipa_user_homedir: "/home"
+    
+    #client FreeIPA variables
+    freeipa_principal_user: admin
+    freeipa_principal_password: verySecret
+    
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+    none
 
 Example Playbook
 ----------------
@@ -35,4 +53,5 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Lars Hunold
+http://macnemo.tv
