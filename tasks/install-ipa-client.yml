@@ -8,9 +8,15 @@
 #
 #==============================================================================+
 
+- name: remove chronyd
+  yum: name="{{item}}" state=absent
+  with_items:
+     - "chronyd"
+
 - name: install IPA software group
   yum: name="{{item}}" state=present
   with_items:
+     - "ntp"
      - "sssd"
      - "sssd-client"
      - "sssd-proxy"
