@@ -1,0 +1,17 @@
+---
+#==============================================================================+
+# Description : add client to specific hostgroup
+#
+# Supported OS: EL7 & EL6
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- name: add client to hostgroup
+  command: ipa hostgroup-add-member --hosts={{ ansible_nodename }} {{ freeipa_hostgroup }}
+  delegate_to: "{{ item }}"
+  with_items:
+    - "{{ freeipa_hostname }}"
+  become: yes
+  become_user: "{{ freeipa_principal_user }}"

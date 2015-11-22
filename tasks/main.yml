@@ -13,3 +13,5 @@
 - include: set-resolv.conf.yml
 - include: install-ipa-client.yml
 - include: client-enroll-ipa.yml
+- include: add-hostgroup.yml
+  when: freeipa_add_hostgroup == true

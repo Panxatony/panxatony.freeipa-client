@@ -18,3 +18,8 @@ freeipa_user_homedir: "/home"
 #client FreeIPA variables
 freeipa_principal_user: admin
 freeipa_principal_password: secretPass
+
+#
+freeipa_add_hostgroup: true
+freeipa_hostgroup: cs9lab
+
