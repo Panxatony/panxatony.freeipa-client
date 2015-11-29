@@ -10,18 +10,28 @@
 
 - name: Enable home creation
   command: authconfig --enablemkhomedir --update
+  tags:
+    - freeipa-client
 
 - name: Enroll IPA client to IPA server unattended 
   command: ipa-client-install  -U -p {{ freeipa_principal_user }} -w {{ freeipa_principal_password }} --enable-dns-updates --mkhomedir --server {{ freeipa_hostname }} --domain {{ freeipa_domain_search }} --realm {{ freeipa_kerberos_realm_name }}  -f
-  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"	
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  tags:
+    - freeipa-client
 
 - name: Enroll IPA client to IPA server unattended 
   command: ipa-client-install  -U -p {{ freeipa_principal_user }} -w {{ freeipa_principal_password }} --enable-dns-updates --mkhomedir --server {{ freeipa_hostname }} --domain {{ freeipa_domain_search }} --realm {{ freeipa_kerberos_realm_name }} --force-ntpd -f
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  tags:
+    - freeipa-client
 
 - name: template sssd.conf
   template: src=sssd.conf.j2 dest=/etc/sssd/sssd.conf owner=root group=root mode=0600 backup=yes
   notify: restart sssd
+  tags:
+    - freeipa-client
 
 - name: start sssd on boot
-  service: name=sssd state=started enabled=yes  
+  service: name=sssd state=started enabled=yes
+  tags:
+    - freeipa-client

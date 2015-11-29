@@ -10,8 +10,8 @@
 
 
 # start IPA client rollout
-- include: set-resolv.conf.yml
-- include: install-ipa-client.yml
-- include: client-enroll-ipa.yml
-- include: add-hostgroup.yml
+- include: set-resolv.conf.yml tags=freeipa-client
+- include: install-ipa-client.yml tags=freeipa-client
+- include: client-enroll-ipa.yml tags=freeipa-client
+- include: add-hostgroup.yml tags=freeipa-client
   when: freeipa_add_hostgroup == true

@@ -12,6 +12,8 @@
   yum: name="{{item}}" state=absent
   with_items:
      - "chronyd"
+  tags:
+    - freeipa-client
 
 - name: install IPA software group
   yum: name="{{item}}" state=present
@@ -24,4 +26,6 @@
      - "authconfig"
      - "ipa-client"
      - "oddjob-mkhomedir"
+  tags:
+    - freeipa-client
 

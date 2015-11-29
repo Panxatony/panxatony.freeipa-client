@@ -15,3 +15,5 @@
     - "{{ freeipa_hostname }}"
   become: yes
   become_user: "{{ freeipa_principal_user }}"
+  tags:
+    - freeipa-client
