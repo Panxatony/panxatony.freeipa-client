@@ -13,7 +13,7 @@
   delegate_to: "{{ item }}"
   with_items:
     - "{{ freeipa_hostname }}"
-  become: yes
-  become_user: "{{ freeipa_principal_user }}"
+  #become: yes
+  #become_user: "{{ freeipa_principal_user }}"
   tags:
     - freeipa-client

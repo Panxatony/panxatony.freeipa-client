@@ -12,6 +12,8 @@
   yum: name="{{item}}" state=absent
   with_items:
      - "chronyd"
+  become: yes
+  become_user: root
   tags:
     - freeipa-client
 
@@ -26,6 +28,8 @@
      - "authconfig"
      - "ipa-client"
      - "oddjob-mkhomedir"
+  become: yes
+  become_user: root
   tags:
     - freeipa-client
 
