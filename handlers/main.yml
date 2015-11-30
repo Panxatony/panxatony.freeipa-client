@@ -3,6 +3,10 @@
 
 - name: restart sssd
   service: name=sssd state=restarted
+  become: yes
+  become_user: root
 
 - name: restart network
   service: name=network state=restarted
+  become: yes
+  become_user: root
