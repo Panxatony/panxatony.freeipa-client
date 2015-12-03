@@ -22,6 +22,7 @@
   become_user: root
   tags:
     - freeipa-client
+    - freeipa-client-skip
 
 - name: Enroll IPA client to IPA server unattended 
   command: ipa-client-install  -U -p {{ freeipa_principal_user }} -w {{ freeipa_principal_password }} --enable-dns-updates --mkhomedir --server {{ freeipa_hostname }} --domain {{ freeipa_domain_search }} --realm {{ freeipa_kerberos_realm_name }} --force-ntpd -f
@@ -30,6 +31,7 @@
   become_user: root
   tags:
     - freeipa-client
+    - freeipa-client-skip
 
 - name: template sssd.conf
   template: src=sssd.conf.j2 dest=/etc/sssd/sssd.conf owner=root group=root mode=0600 backup=yes
